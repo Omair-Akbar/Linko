@@ -20,6 +20,5 @@ const DeleteButton = ({id}:{id:string}) => {
 
 
 
-
 export default DeleteButton
 
