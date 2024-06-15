@@ -7,10 +7,10 @@ export default async function Home() {
   
   const user = await currentUser();
   return (
-   <div className="pt-20">
+   <div className="pt-14">
     <div className="max-w-6xl mx-auto flex justify-between gap-8 ">
        <Sidebar user={user}/>
-       <Feed/>
+       <Feed user={user}/>
        <News/>
     </div>
     </div>
