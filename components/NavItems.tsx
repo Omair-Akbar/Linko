@@ -38,9 +38,11 @@ const NavItems = () => {
         {
             navItems.map((navItem,index)=>{
                 return(
-                    <div key={index} className='flex flex-col items-center cursor-pointer text-[#666666] hover:text-black pt-2'>
+                    <div key={index} className='flex flex-col items-center cursor-pointer '>
+                       <Link className='flex flex-col items-center cursor-pointer text-[#666666] hover:text-black pt-2' href={navItem.src}>
                         <span >{navItem.icon}</span>
-                        < Link className='text-sm' href={navItem.src}>{navItem.text}</Link>
+                        < p className='text-sm' >{navItem.text}</p>
+                       </Link>
                     </div>
                 )
             })

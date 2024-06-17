@@ -7,7 +7,7 @@ const ProfilePhoto = ({src}:{src:any}) => {
     <div>
       <Avatar>
         <AvatarImage src={src} alt="img" />
-        <AvatarFallback>PP</AvatarFallback>
+        <AvatarFallback>DP</AvatarFallback>
       </Avatar>
       </div>
   )

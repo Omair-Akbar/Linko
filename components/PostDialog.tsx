@@ -13,6 +13,9 @@ import Image from 'next/image'
 export function PostDialog({ user, setOpen, open, src }: { user: any, setOpen: any, open: boolean, src: string }) {
   
   const [selectedFile,setSelectedFile] = useState<string>("");
+  const [inputText,setInputText] = useState<string>("")
+  
+  
   const inputRef = useRef<HTMLInputElement>(null);
   const fileChangeHandler= async (e:React.ChangeEvent<HTMLInputElement>)=>{
     const file = e?.target?.files?.[0]
