@@ -1,6 +1,6 @@
-import React, {useRef, useState} from "react"
+import React, { useRef, useState} from "react"
 import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, } from "@/components/ui/dialog"
 import ProfilePhoto from "./shared/ProfilePhoto"
 import { Textarea } from "@/components/ui/textarea"
 import { Plus } from "lucide-react"
@@ -9,20 +9,29 @@ import { readFileAsDataUrl } from "@/lib/utils"
 import Image from 'next/image'
 
 
-
 export function PostDialog({ user, setOpen, open, src }: { user: any, setOpen: any, open: boolean, src: string }) {
   
   const [selectedFile,setSelectedFile] = useState<string>("");
   const [inputText,setInputText] = useState<string>("")
-  
-  
+   
   const inputRef = useRef<HTMLInputElement>(null);
+  
   const fileChangeHandler= async (e:React.ChangeEvent<HTMLInputElement>)=>{
     const file = e?.target?.files?.[0]
     if(file){
       const dataUrl = await readFileAsDataUrl(file)
     setSelectedFile(dataUrl)
     }
+  }
+
+  const postActionHandler = async(formData:FormData)=>{
+    const inputText = formData.get("inputText") as string
+   try {
+    await createPostAction(inputText,selectedFile);
+   } catch (error) {
+    console.log("error11111111111111111")
+   }
+
   }
 
   return (
@@ -37,9 +46,9 @@ export function PostDialog({ user, setOpen, open, src }: { user: any, setOpen: a
             </div>
           </DialogTitle>
         </DialogHeader>
-        <form action="">
+        <form action={postActionHandler}>
           <div className="flex flex-col">
-            <Textarea id="name" name="inputText" className="border-none text-lg focus-visible:ring-0" placeholder="What do you want to talk about?" />
+            <Textarea onChange={(e:React.ChangeEvent<HTMLTextAreaElement>)=>{setInputText(e.target.value)}} value={inputText} id="name" name="inputText" className="border-none text-lg focus-visible:ring-0" placeholder="What do you want to talk about?" />
             <div className="my-4 ">
               {
                 selectedFile && <Image alt="Preview" height={400} width={400} src={selectedFile}/>
