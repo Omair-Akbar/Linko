@@ -38,4 +38,4 @@ const commentSchema = new mongoose.Schema<ICommentDocument>({
 
 }, { timestamps: true })
 
-export const comment : Model<ICommentDocument> = mongoose?.models?.comments || mongoose.model<ICommentDocument>("comment",commentSchema)
+export const comment: Model<ICommentDocument> = mongoose?.models?.comments || mongoose.model<ICommentDocument>("comment", commentSchema)
