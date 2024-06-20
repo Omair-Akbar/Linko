@@ -7,21 +7,34 @@ interface NAVITEMS {
 }
 const newsItems: NAVITEMS[] = [
   {
-    heading: "E-retailer retag health drinks",
+    heading: "Pakistan's E-retailer retag health drinks",
     subHeading: "4h ago - 345 readers"
   },
   {
-    heading: "Lets transport raises $22 million",
+    heading: "Pakistani logistics firm raises $22 million",
     subHeading: "4h ago - 323 readers"
   },
   {
-    heading: "Casual waer is in at India Inc",
+    heading: "Casual wear trend grows in Pakistan Inc",
     subHeading: "4h ago - 234 readers"
   },
   {
-    heading: "Snaller cities go on loans",
+    heading: "Smaller Pakistani cities opt for loans",
     subHeading: "4h ago - 112 readers"
   },
+  {
+    heading: "Pakistani tech giant acquires AI startup",
+    subHeading: "2h ago - 567 readers"
+  },
+  {
+    heading: "New environmental regulations impact Pakistani industries",
+    subHeading: "3h ago - 412 readers"
+  },
+  {
+    heading: "Luxury brands in Pakistan report record sales",
+    subHeading: "5h ago - 299 readers"
+  },
+
 ]
 
 const News = () => {
@@ -32,18 +45,18 @@ const News = () => {
         <Info size={18} />
       </div>
       <div>
-{
-  newsItems.map((item, index)=>{
-    return (
-      <div key={index} className='px-3 py-2 hover:bg-gray-200 hover:cursor-pointer'>
-        <h1 className='text-sm font-medium'>{item.heading}</h1>
-        <p className='text-xs text-gray-600'>{item.subHeading}</p>
+        {
+          newsItems.map((item, index) => {
+            return (
+              <div key={index} className='px-3 py-2 hover:bg-gray-200 hover:cursor-pointer'>
+                <h1 className='text-sm font-medium'>{item.heading}</h1>
+                <p className='text-xs text-gray-600'>{item.subHeading}</p>
+              </div>
+            )
+          })
+        }
       </div>
-    )
-  })
-}
-      </div>
-      
+
     </div>
   )
 }

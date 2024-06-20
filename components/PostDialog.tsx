@@ -44,7 +44,7 @@ export function PostDialog({ user, setOpen, open, src }: { user: any, setOpen: a
           <DialogTitle className="flex gap-2">
             <ProfilePhoto src={src} />
             <div>
-              <h1 className="p-2 pb-1">{`${user?.firstName} ${user?.lastName}`}</h1>
+              <h1 className="p-2 pb-1">{`${user?.firstName || "Login to"} ${user?.lastName || "Post"}`}</h1>
               <p className="p-2 pt-0 text-[12px] font-light">Post to Anyone</p>
             </div>
           </DialogTitle>
@@ -62,8 +62,11 @@ export function PostDialog({ user, setOpen, open, src }: { user: any, setOpen: a
           <DialogFooter>
             <div className="flex items-center gap-4">
               <input ref={inputRef} onChange={fileChangeHandler} type="file" name="image" className="hidden" accept="image/*" />
-              <Button className="rounded-full bg-blue-600 px-5" type="submit">Post</Button>
-            </div>
+              {user?.lastName ?
+                <Button className="rounded-full bg-blue-600 px-5" type="submit">Post</Button>
+                :
+                <Button onClick={() => { setOpen(false) }} className="rounded-full hover:bg-slate-600 bg-slate-600 px-5" >Unable to Post</Button>
+              }            </div>
           </DialogFooter>
         </form>
         <div className="flex">
